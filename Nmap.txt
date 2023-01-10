@@ -1,0 +1,89 @@
+# Este script ejecuta varios scripts de nmap para hacer pruebas de penetración en un servidor web
+
+# Extrae y muestra los encabezados HTTP del servidor web que se está escaneando
+nmap -p 80 --script http-headers <ip_address>
+
+# Recupera y muestra el título de la página web del servidor web que se está escaneando
+nmap -p 80 --script http-title <ip_address>
+
+# Busca directorios de usuario en un servidor web y luego informa sobre cualquier resultado interesante
+nmap -p 80 --script http-userdir-enum <ip_address>
+
+# Busca mecanismos de autenticación en un servidor web y luego informa sobre cualquier resultado interesante
+nmap -p 80 --script http-auth-finder <ip_address>
+
+# Busca y muestra el archivo robots.txt del servidor web que se está escaneando
+nmap -p 80 --script http-robots.txt <ip_address>
+
+# Genera un mapa del sitio para un servidor web a partir de un escaneo del servidor
+nmap -p 80 --script http-sitemap-generator <ip_address>
+
+# Realiza una búsqueda en Google utilizando una consulta de búsqueda especialmente construida para buscar información sensible o interesante en un servidor web
+nmap -p 80 --script http-google-dork <ip_address>
+
+# Recuerda que la realización de pruebas de penetración sin autorización puede ser ilegal en algunos lugares, y es necesario obtener permiso antes de realizar cualquier prueba de penetración. También es importante tener cuidado al utilizar estos scripts y asegurarse de comprender cómo funcionan y cómo pueden afectar a un servidor web.
+
+
+# Este script ejecuta varios scripts de nmap para buscar vulnerabilidades en un servidor web
+
+# Busca vulnerabilidades conocidas en el servidor web que se está escaneando y proporciona una descripción y solución para cada una de ellas
+nmap -p 80 --script http-vuln-cve20XX-XXXX <ip_address>
+
+# Busca vulnerabilidades de inyección SQL en un servidor web
+nmap -p 80 --script http-sql-injection <ip_address>
+
+# Busca vulnerabilidades de inyección de código JavaScript en un servidor web
+nmap -p 80 --script http-xss <ip_address>
+
+# Busca vulnerabilidades de XSS almacenadas en un servidor web
+nmap -p 80 --script http-stored-xss <ip_address>
+
+# Busca vulnerabilidades de cross-site request forgery (CSRF) en un servidor web
+nmap -p 80 --script http-csrf <ip_address>
+
+# Busca una vulnerabilidad conocida como Fortune Cookie en un servidor web
+nmap -p 80 --script http-vuln-misfortune-cookie <ip_address>
+
+# Recuerda que la realización de pruebas de penetración sin autorización puede ser ilegal en algunos lugares, y es necesario obtener permiso antes de realizar c
+
+
+nmap -p 80 --script http-robots.txt.nse 192.168.1.0/24
+nmap --script http-sitemap-generator.nse 192.168.1.66
+nmap --script http-enum.nse 192.168.1.66
+nmap --script http-headers.nse 192.168.1.65
+nmap --script http-tittle.nse 192.168.1.66 -vv
+nmap --script http-favicon.nse 192.168.1.0/24
+namp -sV --script=banner
+
+
+-sS (TCP SYN Scan): Este es un escaneo de puertos rápido y silencioso que envía un paquete SYN sin completar el proceso de establecimiento de conexión.
+-sT (TCP Connect Scan): Este es un escaneo más lento que envía un paquete SYN y completa el proceso de establecimiento de conexión.
+-sU (UDP Scan): Este escaneo envía paquetes UDP a puertos no-privilegiados para ver si están abiertos.
+-sV (Version Detection): Este escaneo trata de determinar la versión del servicio que se está ejecutando en cada puerto abierto.
+-O (Operating System Detection): Este escaneo trata de determinar el sistema operativo que está en el host que está siendo escaneado.
+-p (Especificar Puertos): Esta opción te permite especificar qué puertos deben escanearse.
+-T (Timing): Esta opción te permite ajustar el nivel de agresividad del escaneo.
+-A (Aggressive Detection): Esta opción habilita varias opciones de detección agresiva, incluyendo la detección de sistema operativo y versiones de servicios.
+-v (Verbose): Esta opción hace que nmap genere una salida más detallada
+
+
+nmap -sS -sV -O -p 1-65535 -T4 -A -v [IP o nombre del host]
+
+
+# Especificar el host que se va a escanear
+$host = "[IP o nombre del host]"
+
+# Realizar un escaneo TCP SYN (-sS) y determinar la versión del servicio (-sV) en cada puerto abierto
+# Intentar determinar el sistema operativo (-O) del host
+# Escanear todos los puertos del 1 al 65535 (-p 1-65535)
+# Utilizar un nivel de timing medio (-T4)
+# Habilitar varias opciones de detección agresiva (-A)
+# Mostrar la salida del escaneo de forma detallada (-v)
+nmap -sS -sV -O -p 1-65535 -T4 -A -v $host
+
+
+
+
+
+
+
